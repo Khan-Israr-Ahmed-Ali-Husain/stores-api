@@ -16,10 +16,6 @@ app.secret_key = 'jose'
 api = Api(app)
 
 
-@app.before_first_request    # It creates the database and all the necessary tables if does not exist
-def create_tables():
-    db.create_all()
-
 jwt = JWT(app, authenticate, identity) # it creates an end point /auth  , we need to pass the credentials, it will return the JWT token which can be used as an identity
 
 api.add_resource(Store,'/store/<string:name>')
